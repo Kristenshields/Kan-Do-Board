@@ -4,25 +4,32 @@ const login = async (userInfo: UserLogin) => {
   // TODO: make a POST request to the login route
   try {
     const response = await fetch(
-      '/api/users/login', {
+      '/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(userInfo),
-    }
-)
-    const data = response.json();
+    });
 
     if (!response.ok) {
-      throw new Error('invalid user API response, check network tab!');
+      const errorMessage = await response.json(); 
+      throw new Error(errorMessage.message || 'invalid user API response, check network tab!');
     }
 
+    const data = await response.json();
+    console.log('data from login:', data);
+
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+    }
+    
     return data;
 
   } catch (err) {
     console.log('Error from data retrieval:', err);
     return Promise.reject('Could not fetch singular ticket');
+    
   }
 }
 

@@ -8,29 +8,24 @@ interface JwtPayload {
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
   // TODO: verify the token exists and add the user data to the request object
   const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(' ')[1];
 
-  if (!authHeader) {
-    return res.sendStatus(401);
-  }
-
-  const token = authHeader.split(' ')[1];
   if (!token) {
-    return res.sendStatus(401);
+    return res.status(401).json({ message: 'Unauthorized' });
   }
 
-  const secretKey = process.env.JWT_SECRET_KEY;
 
-  if (!secretKey) {
-    return res.sendStatus(500);
-  }
+   try {
+    const secretKey = process.env.JWT_SECRET_KEY as string;
+    const decoded = jwt.verify(token, secretKey) as JwtPayload;
 
-  jwt.verify(token, secretKey, (err, user) => {
-    if (err) {
-      return res.sendStatus(403);
-    }
-
-    req.user = user as JwtPayload;
+    
+    req.user = {
+      username: decoded.username
+    };
+    
     return next();
-  });
-return;
+  } catch (error) {
+    return res.status(403).json({ message: 'Forbidden' });
+  }
 };
