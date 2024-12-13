@@ -13,10 +13,24 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     return res.sendStatus(401);
   }
 
-  const token = authHeader.split(' ');
-  if (token.length !== 2) {
+  const token = authHeader.split(' ')[1];
+  if (!token) {
     return res.sendStatus(401);
   }
 
+  const secretKey = process.env.JWT_SECRET_KEY;
 
+  if (!secretKey) {
+    return res.sendStatus(500);
+  }
+
+  jwt.verify(token, secretKey, (err, user) => {
+    if (err) {
+      return res.sendStatus(403);
+    }
+
+    req.user = user as JwtPayload;
+    return next();
+  });
+return;
 };
