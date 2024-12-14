@@ -14,18 +14,20 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     return res.status(401).json({ message: 'Unauthorized' });
   }
 
+try {
+  const secretKey = process.env.JWT_SECRET_KEY as string;
+  const decoded = jwt.verify(token, secretKey) as JwtPayload;
 
-   try {
-    const secretKey = process.env.JWT_SECRET_KEY as string;
-    const decoded = jwt.verify(token, secretKey) as JwtPayload;
+   req.user = {
+    username: decoded.username,
+  };
 
-    
-    req.user = {
-      username: decoded.username
-    };
-    
-    return next();
-  } catch (error) {
-    return res.status(403).json({ message: 'Forbidden' });
-  }
+  return next();
+} catch (error) {
+  console.error('Failed to authenticate token:', error);
+  return res.status(403).json({ message: 'Forbidden' });
+}
 };
+    
+    
+   
