@@ -3,13 +3,17 @@ import { JwtPayload, jwtDecode } from 'jwt-decode';
 class AuthService {
   getProfile() {
     // TODO: return the decoded token
-    return jwtDecode<JwtPayload>(this.getToken());
+    const token = this.getToken();
+    if (!token) {
+      throw new Error('No token found');
+    }
+    return jwtDecode<JwtPayload>(token);
   }
 
-  loggedIn() {
+  loggedIn(): boolean {
     // TODO: return a value that indicates if the user is logged in
     const token = this.getToken();
-    return !!token && !this.isTokenExpired(token);
+    return !!token;
   }
   
   isTokenExpired(token: string) {
@@ -24,14 +28,15 @@ class AuthService {
     }
   }
 
-  getToken(): string {
+  getToken(): string | null {
     // TODO: return the token
     const token = localStorage.getItem('id_token');
     if (!token) {
-      throw new Error('No token found');
-    } else {
+      console.warn('No token found');
+      return null;
+    } 
       return token;
-    }
+    
     
   }
 
