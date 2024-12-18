@@ -20,17 +20,17 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-      "bcrypt": "^5.2.1",
-      "dotenv": "^16.6.0",
-      "express": "^4.21.3",
-      "jsonwebtoken": "^9.1.2",
+      "bcrypt": "^5.1.1",
+      "dotenv": "^16.4.7",
+      "express": "^4.21.2",
+      "jsonwebtoken": "^9.0.2",
       "pg": "^8.11.12",
-      "sequelize": "^6.37.3"
+      "sequelize": "^6.37.5"
     },
     "devDependencies": {
-      "@types/bcrypt": "^5.1.0",
-      "@types/express": "^4.17.21",
-      "@types/jsonwebtoken": "^9.0.10",
+      "@types/bcrypt": "^5.0.0",
+      "@types/express": "^4.17.13",
+      "@types/jsonwebtoken": "^8.5.9",
       "typescript": "^5.5.6"
     }
   }

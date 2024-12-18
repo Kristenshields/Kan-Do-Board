@@ -30,13 +30,16 @@ class AuthService {
 
   getToken(): string {
     // TODO: return the token
-    return localStorage.getItem('token') || '';
+    const token = localStorage.getItem('token') || '';
+    console.log('Retrieved token:', token);
+    return token;
   
     } 
 
   login(idToken: string) {
     // TODO: set the token to localStorage
     localStorage.setItem('token', idToken);
+    console.log('Set token:', idToken);
     // TODO: redirect to the home page
     window.location.assign('/');
   }
