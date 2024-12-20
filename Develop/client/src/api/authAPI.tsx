@@ -5,7 +5,7 @@ import { UserLogin } from "../interfaces/UserLogin";
 const login = async (userInfo: UserLogin) => {
   // TODO: make a POST request to the login route
   try {
-    const response = await fetch("http://localhost:3000/auth/login", {
+    const response = await fetch('/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -13,25 +13,22 @@ const login = async (userInfo: UserLogin) => {
       body: JSON.stringify(userInfo),
       
     });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(errorText);
-    }
-   
+  
     const data = await response.json();
   
     console.log('Response status:', response.status);
     console.log('Response body:', data);
 
-    return data;
-
-  } catch (error) {
-    console.error('Failed to login:', error);
-    throw error;
-  }
+   
+if (!response.ok) {
+  throw new Error('Check the username and password and try again');
 }
 
-
+return data;
+  } catch (error) {
+    console.error('Error logging in:', error);
+    return Promise.reject("could not fetch user data");
+  }
+}
 
 export { login };

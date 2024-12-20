@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       }
     ]
   }
-])
+]);
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
