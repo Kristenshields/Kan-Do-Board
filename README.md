@@ -26,7 +26,8 @@
 
   4. ### set up postgreSQL in .env file:
 
-   * create a .env file in the server directory with the following:
+    create a .env file in the server directory with the following:
+
   - `DB_NAME='kanban_db'`
   - `DB_USER='' (your postgreSQL username)`
   - `DB_PASSWORD='' (your postgreSQL password)`
