@@ -30,9 +30,9 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />
-      }
-    ]
-  }
+      },
+    ],
+  },
 ]);
 
 const rootElement = document.getElementById('root');
