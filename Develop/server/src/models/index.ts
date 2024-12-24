@@ -10,10 +10,7 @@ const sequelize = process.env.DB_URL
   
       dialect: 'postgres',
       dialectOptions: {
-        ssl: {
-          require: true,
-          rejectUnauthorized: false,
-        },
+       
         decimalNumbers: true,
       },
     })
@@ -25,13 +22,7 @@ const sequelize = process.env.DB_URL
         host: process.env.DB_HOST || 'localhost',
         dialect: 'postgres',
         dialectOptions: { 
-          ssl:
-          process.env.DB_HOST !== 'localhost'
-          ? {
-            require: true,
-            rejectUnauthorized: false,
-          }
-          : undefined,
+        
           decimalNumbers: true,
       },
     }
