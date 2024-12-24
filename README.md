@@ -12,27 +12,33 @@
   - [Resources](#resources)
 
   ## Installation
-  1. Clone the repository:
-  git clone https://github.com/Kristenshields/Kan-Do-Board.git
+  1. ### Clone the repository:
 
-  2. Navigate to root directory:
-  cd Kan-Do-Board/Develop
+     * `git clone https://github.com/Kristenshields/Kan-Do-Board.git`
 
-  3. Install dependencies:
-  run the following command: npm install
+  2. ### Navigate to root directory:
 
-  4. set up postgreSQL in .env file:
-  create a .env file in the server directory with the following:
-  - DB_NAME='kanban_db'
-  - DB_USER='' (your postgreSQL username)
-  - DB_PASSWORD='' (your postgreSQL password)
-  - JWT_SECRET_KEY='' (it can be whatever you want)
+     * `cd Kan-Do-Board/Develop`
 
-  5. Start the application:
-  run the following command to start the app: npm run start:dev
+  3. ### Install dependencies:
 
-  6. View the application:
-  Open http://localhost:3000/ in your browser to view the application
+     * run the following command: `npm install`
+
+  4. ### set up postgreSQL in .env file:
+
+   * create a .env file in the server directory with the following:
+  - `DB_NAME='kanban_db'`
+  - `DB_USER='' (your postgreSQL username)`
+  - `DB_PASSWORD='' (your postgreSQL password)`
+  - `JWT_SECRET_KEY='' (it can be whatever you want)`
+
+  5. ### Start the application:
+
+    * run the following command to start the app: `npm run start:dev`
+
+  6. ### View the application:
+
+     * Open http://localhost:3000/ in your browser to view the application
 
   ## Usage
   - Add, 
@@ -41,7 +47,7 @@
 
 
   ## Screenshots
-
+ 
   ![Main Page](./Assets/mainPage.png)
   ![Login Page](./Assets/loginPage.png)
   ![Kanban Board](./Assets/kanbanBoard.png)
@@ -53,7 +59,7 @@
  
   ## Questions
   For any questions, feel free to reach me via:
-  - GitHub: Kristenshields
+  - GitHub: https://github.com/Kristenshields/
   - Email: shieldskristen0@gmail.com
 
   ## Resources
